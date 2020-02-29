@@ -8,6 +8,9 @@ function getWindowDimensions() {
     };
 }
 
+/**
+ * This function will produce as an object { width, height }
+ */
 export default function useWindowDimensions() {
     const [windowDimensions, setWindowDimensions] = useState(
         getWindowDimensions()

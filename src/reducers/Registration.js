@@ -37,8 +37,8 @@ export default function Registration(state = initState, action) {
         
         case SET_DOB_STATE_REGISTRATION:
             const { keyDob, valDob } = action.payload
-            const dobState = {...state}
-            dobState.dob[keyDob] = valDob
+            const dobState = {...state.dob}
+            dobState[keyDob] = valDob
             return {
                 ...state,
                 dob: {...dobState}

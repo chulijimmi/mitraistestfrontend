@@ -19,7 +19,8 @@ export default function ErrorHandling(state = initState, action) {
             return{
                 ...state,
                 errorCode: code,
-                errorMessage: message
+                errorMessage: message,
+                showErrorComponent: true
             }
         
         case SHOW_ERROR_MESSAGE:
@@ -31,7 +32,7 @@ export default function ErrorHandling(state = initState, action) {
         case HIDE_ERROR_MESSAGE:
             return {
                 ...state,
-                showErrorComponent: false
+                ...initState
             }
         default:
             return state

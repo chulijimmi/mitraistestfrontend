@@ -25,8 +25,8 @@ Registration API including data
 }
 ```
 
-The url api available on 
-(https://mitraist.herokuapp.com/auth/signup)
+This project can access on
+(https://catnuxer.github.io/mitraistestfrontend/)
 
 ## Test unit
 To run test unit scenario

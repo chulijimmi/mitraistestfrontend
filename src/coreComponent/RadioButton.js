@@ -2,6 +2,10 @@ import React, { setState, useState } from 'react'
 import PropTypes from 'prop-types'
 import { FormControlLabel, Radio } from '@material-ui/core'
 
+/**
+ * Radio Button should have properties checked and label
+ * @param {Object} props 
+ */
 function RadioButton(props) {
 
     const [state, setState] = useState(false)
@@ -14,7 +18,7 @@ function RadioButton(props) {
     return(
         <FormControlLabel
             control={
-                <Radio checked={props.checked}/>
+                <Radio color="primary" checked={props.checked}/>
             }
             label={props.label}
             onChange={handleChange}

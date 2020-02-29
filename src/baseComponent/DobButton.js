@@ -99,6 +99,7 @@ function DobButton(props) {
 
     return(
         <Grid container item xs={12}>
+            <>
             <Grid item xs={xsDob()} sm={smDob()} style={{ paddingRight: width > 786 ? 10 : 0}} className={classes.dob}>
                 <SelectOptions
                     labelButton={labelMonth}
@@ -117,6 +118,7 @@ function DobButton(props) {
                     data={getYear()}
                     onSelect={(value) => handleClickYear(value)} />
             </Grid>
+            </>
         </Grid>
     )
 }

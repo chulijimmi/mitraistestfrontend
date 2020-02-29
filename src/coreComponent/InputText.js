@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function InputText(props) {
-
     const [value, setValue] = React.useState('');
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
         props.onChange(event.target.value);
     }
+    
     const Style = {
         container: {
             overflow: 'hidden',
@@ -37,6 +37,8 @@ function InputText(props) {
                 onChange={handleChange} 
                 value={value}
                 placeholder={props.label}
+                onFocus={props.onFocus}
+                onBlur={props.onBlur}
                 />
         </div>
     )
