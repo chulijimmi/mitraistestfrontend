@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Colors from '../constant/Colors'
 import Button from '../coreComponent/Button'
 import { connect } from 'react-redux'
@@ -40,14 +41,19 @@ function ContentFooter() {
  * @param {Object} props 
  */
 function Footer(props) {
-    const {setStateRegistration} = props
+    const {setStateRegistration, showLoginButton} = props
     return(
         <div style={Style.footer}>
             {
-                props.showLoginButton ? <ButtonLogin setStateRegistration={setStateRegistration}/> : <ContentFooter />
+                showLoginButton ? <ButtonLogin setStateRegistration={setStateRegistration}/> : <ContentFooter />
             }
         </div>
     )
+}
+
+Footer.propTypes = {
+    showLoginButton: PropTypes.func.isRequired,
+    setStateRegistration: PropTypes.func.isRequired
 }
 
 const mtp = ({Registration}) => {
