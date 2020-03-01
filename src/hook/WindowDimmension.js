@@ -10,6 +10,8 @@ function getWindowDimensions() {
 
 /**
  * This function will produce as an object { width, height }
+ * Use to get value of width heigh related on size breakpoint
+ * of component elements
  */
 export default function useWindowDimensions() {
     const [windowDimensions, setWindowDimensions] = useState(

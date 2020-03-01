@@ -13,8 +13,15 @@ import {
     setStateRegistration,
     setDobStateRegistration
 } from '../actions/Registration'
+import {
+    setErrorMessage,
+    hideErrorMessage
+} from '../actions/ErrorHandling'
 import { connect } from 'react-redux'
 import ErrorComponent from '../baseComponent/ErrorComponent'
+import { remapMobileNumber, validateEmail } from '../validation/RegisterValidation'
+import MessagingError from '../validation/MessagingError'
+
 const styles = theme => ({
     root: {
         flexGrow: 1
@@ -70,31 +77,27 @@ function RegistrationForm(props) {
         email,
         showLoginButton
     } = props
-    const { errorCode, errorMessage } = props
+    const { errorCode, errorMessage, showErrorComponent, setErrorMessage, hideErrorMessage } = props
 
     //State Logic On Validate Form
-    const [isValidMobileNumber, setValidMobileNumber] = useState(true)
     const handleCheckMobileNumber = () => {
         if (mobileNumber == '')
-        setValidMobileNumber(!isValidMobileNumber)
+        setErrorMessage(201, 'Mobile number is required')
     }
-
-    const [isValidFirstName, setValidFirstName] = useState(true)
+    
     const handleCheckFirstName = () => {
         if (firstName == '')
-        setValidFirstName(!isValidFirstName)
+        setErrorMessage(202, 'First name is required')
     }
 
-    const [isValidLastName, setValidLastName] = useState(true)
     const handleCheckLastName = () => {
         if (lastName == '')
-        setValidLastName(!isValidLastName)
+        setErrorMessage(203, 'Last name is required')
     }
 
-    const [isValidEmail, setValidEmail] = useState(true)
     const handleCheckEmail = () => {
         if(email == '')
-        setValidEmail(!isValidEmail)
+        setErrorMessage(304, 'Email is required and should valid email address')
     }
     
     //Style logic reducing the size screen
@@ -129,39 +132,29 @@ function RegistrationForm(props) {
             <Grid item xs={12} sm={smSize(width)} className={classes.grid}>
                 <Paper elevation={0} className={classes.paper}>
                     <RenderTitle></RenderTitle>
-                    {
-                        !isValidMobileNumber && 
-                        <ErrorComponent 
-                            message={'Mobile number is required'} 
-                            hide={() => setValidMobileNumber(true)}
-                        />
-                    }
+                    <ErrorComponent 
+                        message={errorMessage}
+                        code={errorCode}
+                        hide={() => hideErrorMessage()}
+                        show={showErrorComponent}
+                    />
                     <InputText
                         label='Mobile number' 
                         width={width}
                         onBlur={handleCheckMobileNumber}
-                        onChange={(val) => setStateRegistration('mobileNumber', val)} />
-                    {
-                        !isValidFirstName && 
-                        <ErrorComponent 
-                            message={'First name is required'}
-                            hide={() => setValidFirstName(true)} />
-                    }
+                        value={mobileNumber}
+                        onChange={(val) => setStateRegistration('mobileNumber', remapMobileNumber(val))} />
                     <InputText 
                         label='First name'
                         width={width}
                         onBlur={handleCheckFirstName}
+                        value={firstName}
                         onChange={(val) => setStateRegistration('firstName', val)} />
-                    {
-                        !isValidLastName &&
-                        <ErrorComponent 
-                            message={'Last name is required'}
-                            hide={() => setValidLastName(true)} />
-                    }
                     <InputText
                         label='Last name'
                         width={width}
                         onBlur={handleCheckLastName}
+                        value={lastName}
                         onChange={(val) => setStateRegistration('lastName', val)} />
                     <DobButton 
                         onChangeMonth={(value) => setDobStateRegistration('month', value)}
@@ -170,17 +163,15 @@ function RegistrationForm(props) {
                     <GenderOptions
                         checked={gender}
                         onChange={(value) => setStateRegistration('gender', value)} />
-                    {
-                        !isValidEmail &&
-                        <ErrorComponent 
-                            message={'Email is required'}
-                            hide={() => setValidEmail(true)} />
-                    }
                     <InputText
                         label='Email'
                         width={width}
                         onBlur={handleCheckEmail}
-                        onChange={(val) => setStateRegistration('email', val)} />
+                        value={email}
+                        onChange={(val) => {
+                            const email = validateEmail(val)
+                            setStateRegistration('email', val)
+                        }} />
                     <Button color="secondary" label={'Register'} onClick={() => sagaRegistration()}/>
                 </Paper>
             </Grid>
@@ -191,7 +182,8 @@ function RegistrationForm(props) {
 const mtp = ({ErrorHandling, Registration}) => {
     const {
         errorCode,
-        errorMessage
+        errorMessage,
+        showErrorComponent
     } = ErrorHandling
 
     const { mobileNumber,
@@ -219,5 +211,7 @@ const mtp = ({ErrorHandling, Registration}) => {
 export default connect(mtp, {
     sagaRegistration,
     setStateRegistration, 
-    setDobStateRegistration
+    setDobStateRegistration,
+    setErrorMessage,
+    hideErrorMessage
 })(withStyles(styles)(RegistrationForm))

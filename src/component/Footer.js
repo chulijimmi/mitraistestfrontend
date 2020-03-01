@@ -52,7 +52,7 @@ function Footer(props) {
 }
 
 Footer.propTypes = {
-    showLoginButton: PropTypes.func.isRequired,
+    showLoginButton: PropTypes.bool.isRequired,
     setStateRegistration: PropTypes.func.isRequired
 }
 

@@ -2,9 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function InputText(props) {
-    const [value, setValue] = React.useState('');
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(event.target.value);
         props.onChange(event.target.value);
     }
     
@@ -35,7 +33,7 @@ function InputText(props) {
                 type="text" 
                 style={Style.input} 
                 onChange={handleChange} 
-                value={value}
+                value={props.value}
                 placeholder={props.label}
                 onFocus={props.onFocus}
                 onBlur={props.onBlur}
@@ -45,7 +43,8 @@ function InputText(props) {
 }
 InputText.propTypes = {
     onChange: PropTypes.func.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
 }
 
 export default InputText

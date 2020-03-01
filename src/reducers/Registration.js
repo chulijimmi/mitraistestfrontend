@@ -3,6 +3,7 @@ import {
     SET_DOB_STATE_REGISTRATION,
     SHOW_LOGIN_BUTTON_REGISTRATION
 } from '../constant/Registration'
+import { remapMobileNumber } from '../validation/RegisterValidation'
 
 const initState = {
     mobileNumber : '',
