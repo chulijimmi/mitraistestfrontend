@@ -21,3 +21,18 @@ code {
     height: 0; 
     clear: both;
 }
+
+.error-enter {
+    opacity: 0;
+}
+.error-enter-active {
+    opacity: 1;
+    transition: opacity 100ms ease-in;
+}
+.error-exit {
+    opacity: 1;
+}
+.error-exit-active {
+    opacity: 0;
+    transition: opacity 100ms ease-in;
+}

@@ -9,12 +9,9 @@ function* __doRegister() {
     try {
         const payload = yield select( state => state.Registration )
         payload.dob = `${payload.dob.year}-${payload.dob.month}-${payload.dob.day}`
-
         yield put(showLoginButtonRegistration())
         const response = yield call(apiRegister, payload);
         console.log('response', response)
-        yield delay(5000)
-        console.log('__doRegister', payload)
     } catch (error) {
         throw error
     }

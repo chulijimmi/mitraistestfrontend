@@ -2,7 +2,7 @@ import React from 'react'
 import Colors from '../constant/Colors'
 import Button from '../coreComponent/Button'
 import { connect } from 'react-redux'
-
+import { setStateRegistration } from '../actions/Registration'
 const Style = {
     footer: {
         marginTop: 30, 
@@ -20,10 +20,11 @@ const Style = {
 }
 
 function ButtonLogin(props) {
+    const { setStateRegistration } = props
     return(
         <Button 
             label={'Login'} 
-            onClick={() => console.log('Login pressed')} />
+            onClick={() => setStateRegistration('showLoginButton', false)} />
     )
 }
 
@@ -39,10 +40,11 @@ function ContentFooter() {
  * @param {Object} props 
  */
 function Footer(props) {
+    const {setStateRegistration} = props
     return(
         <div style={Style.footer}>
             {
-                props.showLoginButton ? <ButtonLogin /> : <ContentFooter />
+                props.showLoginButton ? <ButtonLogin setStateRegistration={setStateRegistration}/> : <ContentFooter />
             }
         </div>
     )
@@ -53,4 +55,4 @@ const mtp = ({Registration}) => {
     return {showLoginButton}
 }
 
-export default connect(mtp, {})(Footer)
+export default connect(mtp, {setStateRegistration})(Footer)

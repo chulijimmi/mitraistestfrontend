@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Colors from '../constant/Colors'
+import {
+    CSSTransition,
+    TransitionGroup
+} from 'react-transition-group'
 
 const Style = {
     box: {
@@ -35,10 +39,14 @@ const Style = {
  */
 function ErrorComponent(props) {
     return(
-        <div style={Style.box} onClick={() => props.hide()}>
-            <div style={Style.arrow}></div>
-            <span style={Style.text}>{props.message}</span>
-        </div>
+        <TransitionGroup>
+            <CSSTransition timeout={500} classNames="error">
+                <div style={Style.box} onClick={() => props.hide()}>
+                    <div style={Style.arrow}></div>
+                    <span style={Style.text}>{props.message}</span>
+                </div>
+            </CSSTransition>
+        </TransitionGroup>
     )
 }
 
