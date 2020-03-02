@@ -18,8 +18,8 @@ export function* __doRegister() {
         if(response.error !== 0) {
             yield put(setErrorMessage(response.error, response.message))
         } else {
-            yield put(showLoginButtonRegistration())
             yield put(setSuccessRegistration())
+            yield put(showLoginButtonRegistration())
         }
     } catch (error) {
         throw error

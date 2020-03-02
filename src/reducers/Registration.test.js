@@ -1,7 +1,5 @@
 import RegistrationReducer from '../reducers/Registration'
-import ErrorHandlingReducer from '../reducers/ErrorHandling'
 import * as typeReg from '../constant/Registration'
-import * as typeErr from '../constant/ErrorHandling'
 
 describe('registration reducer', () => {
     const initState = {
@@ -15,12 +13,16 @@ describe('registration reducer', () => {
         },
         gender: 2, //0: Female, 1: Male
         email: '',
-        showLoginButton: false
+        showLoginButton: false,
+        isRegistered: false,
+        isFetchingApi: false
     }
+    //Test case the initial state
     it ('should return the initial state', () => {
         expect (RegistrationReducer(undefined, {})).toEqual(initState)
     })
 
+    //Test case when the state is change
     it ('should change value of state', () => {
         const keyState = 'mobileNumber';
         const valState = '081249218736';
@@ -29,17 +31,8 @@ describe('registration reducer', () => {
             payload: {keyState, valState}
         }
         expect (RegistrationReducer(initState, action)).toEqual({
-            mobileNumber : '081249218736',
-            firstName: '',
-            lastName: '',
-            dob: {
-                day: '',
-                month: '',
-                year: '',
-            },
-            gender: 2, //0: Female, 1: Male
-            email: '',
-            showLoginButton: false
+            ...initState,
+            mobileNumber : '081249218736'
         })
     })
 })

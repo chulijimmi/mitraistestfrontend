@@ -29,7 +29,10 @@ function ButtonLogin(props) {
     return(
         <Button 
             label={'Login'} 
-            onClick={() => action()} />
+            onClick={() => {
+                action()
+                props.history.push('/login')
+            }} />
     )
 }
 
@@ -53,7 +56,7 @@ function Footer(props) {
     return(
         <div style={Style.footer}>
             {
-                showLoginButton ? <ButtonLogin action={hideLoginButtonRegistration}/> : <ContentFooter />
+                showLoginButton ? <ButtonLogin action={hideLoginButtonRegistration} {...props}/> : <ContentFooter />
             }
         </div>
     )
