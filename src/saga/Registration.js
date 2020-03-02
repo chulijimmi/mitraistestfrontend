@@ -1,9 +1,8 @@
 import { all, fork, takeEvery, select, put, delay, call } from 'redux-saga/effects'
 import { SAGA_REGISTRATION } from '../constant/Registration'
-import { showLoginButtonRegistration, setSuccessRegistration } from '../actions/Registration'
+import { showLoginButtonRegistration, setSuccessRegistration, setIsFetchingApi } from '../actions/Registration'
 import { setErrorMessage } from '../actions/ErrorHandling'
 import AuthApi from '../api/AuthApi'
-import { push } from 'connected-react-router'
 
 const apiRegister = payload => AuthApi.register({payload}).then(resp => resp).catch(err => err);
 
@@ -11,6 +10,7 @@ const apiRegister = payload => AuthApi.register({payload}).then(resp => resp).ca
  * Register Button Task Runner
  */
 export function* __doRegister() {
+    yield put(setIsFetchingApi(true));
     try {
         const payload = yield select( state => state.Registration )
         payload.dob = `${payload.dob.year}-${payload.dob.month}-${payload.dob.day}`
@@ -24,6 +24,7 @@ export function* __doRegister() {
     } catch (error) {
         throw error
     }
+    yield put(setIsFetchingApi(false))
 }
 
 export function* doRegister() {

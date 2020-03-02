@@ -3,7 +3,9 @@ import {
     SET_DOB_STATE_REGISTRATION,
     SAGA_REGISTRATION,
     SHOW_LOGIN_BUTTON_REGISTRATION,
-    SUCCESS_REGISTRATION
+    HIDE_LOGIN_BUTTON_REGISTRATION,
+    SUCCESS_REGISTRATION,
+    SET_IS_FETCHING_API
 } from '../constant/Registration'
 
 /**
@@ -56,10 +58,37 @@ export const showLoginButtonRegistration = () => {
 }
 
 /**
- * This call in condition success Registration
+ * Use this action to hide the login button component
+ * after the process of success registration 
+ */
+export const hideLoginButtonRegistration = () => {
+    return {
+        type: HIDE_LOGIN_BUTTON_REGISTRATION
+    }
+}
+
+/**
+ * Call success conditions and reset the state of
+ * Registration as initial state.
+ * This should be call when registration success.
+ * So this action will call in saga related to
+ * SagaRegistration.
  */
 export const setSuccessRegistration = () => {
     return {
         type: SUCCESS_REGISTRATION
+    }
+}
+
+/**
+ * Manage the UI of screen or button
+ * It can use on handle the loading of
+ * component.
+ * @param {Boolean} statusFetch 
+ */
+export const setIsFetchingApi = (statusFetch) => {
+    return {
+        type: SET_IS_FETCHING_API,
+        payload: { statusFetch }
     }
 }

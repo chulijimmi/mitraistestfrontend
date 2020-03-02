@@ -1,3 +1,10 @@
+/**
+ * Use the colors as definition
+ * Primary: Black
+ * Secondary: Purple
+ * Success: Green
+ * etc
+ */
 const primary = '#000000';
 const secondary = '#9c27b0';
 const success = '#388e3c';

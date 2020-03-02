@@ -2,7 +2,9 @@ import {
     SET_STATE_REGISTRATION,
     SET_DOB_STATE_REGISTRATION,
     SHOW_LOGIN_BUTTON_REGISTRATION,
-    SUCCESS_REGISTRATION
+    HIDE_LOGIN_BUTTON_REGISTRATION,
+    SUCCESS_REGISTRATION,
+    SET_IS_FETCHING_API
 } from '../constant/Registration'
 
 const initState = {
@@ -17,7 +19,8 @@ const initState = {
     gender: 2, //0: Female, 1: Male
     email: '',
     showLoginButton: false,
-    isRegistered: false
+    isRegistered: false,
+    isFetchingApi: false
 }
 
 /**
@@ -51,11 +54,23 @@ export default function Registration(state = initState, action) {
                 ...state,
                 showLoginButton: true
             }
-
+        
+        case HIDE_LOGIN_BUTTON_REGISTRATION:
+            return {
+                ...state,
+                showLoginButton: false
+            }
+            
         case SUCCESS_REGISTRATION:
             return {
                 ...initState,
                 isRegistered: true
+            }
+        case SET_IS_FETCHING_API:
+            const {statusFetch} = action.payload
+            return {
+                ...state,
+                isFetchingApi: statusFetch
             }
         default:
             return state

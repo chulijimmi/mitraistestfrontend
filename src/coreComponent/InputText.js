@@ -1,6 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * This InputText Component have 3 main props:
+ * onChange is a function
+ * label is is a string
+ * value is a string
+ * @param {Object} props 
+ */
 function InputText(props) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         props.onChange(event.target.value);

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Colors from '../constant/Colors'
 import Button from '../coreComponent/Button'
 import { connect } from 'react-redux'
-import { setStateRegistration } from '../actions/Registration'
+import { hideLoginButtonRegistration } from '../actions/Registration'
 const Style = {
     footer: {
         marginTop: 30, 
@@ -20,15 +20,22 @@ const Style = {
     }
 }
 
+/**
+ * Render the button login component
+ * @param {Function} props 
+ */
 function ButtonLogin(props) {
-    const { setStateRegistration } = props
+    const { action } = props
     return(
         <Button 
             label={'Login'} 
-            onClick={() => setStateRegistration('showLoginButton', false)} />
+            onClick={() => action()} />
     )
 }
 
+/**
+ * Render the content of footer
+ */
 function ContentFooter() {
     return(
         <h1 style={Style.footerTitle}>Footer</h1>
@@ -37,15 +44,16 @@ function ContentFooter() {
 
 /**
  * Connected to reducer Registration
- * Button login show only if register button clicked
+ * The Button login component is show only
+ * success registration process
  * @param {Object} props 
  */
 function Footer(props) {
-    const {setStateRegistration, showLoginButton} = props
+    const {hideLoginButtonRegistration, showLoginButton} = props
     return(
         <div style={Style.footer}>
             {
-                showLoginButton ? <ButtonLogin setStateRegistration={setStateRegistration}/> : <ContentFooter />
+                showLoginButton ? <ButtonLogin action={hideLoginButtonRegistration}/> : <ContentFooter />
             }
         </div>
     )
@@ -53,12 +61,12 @@ function Footer(props) {
 
 Footer.propTypes = {
     showLoginButton: PropTypes.bool.isRequired,
-    setStateRegistration: PropTypes.func.isRequired
+    hideLoginButtonRegistration: PropTypes.func.isRequired
 }
 
 const mtp = ({Registration}) => {
-    const {showLoginButton} = Registration
-    return {showLoginButton}
+    const {showLoginButton, hideLoginButtonRegistration} = Registration
+    return {showLoginButton, hideLoginButtonRegistration}
 }
 
-export default connect(mtp, {setStateRegistration})(Footer)
+export default connect(mtp, {hideLoginButtonRegistration})(Footer)

@@ -59,10 +59,10 @@ const styles = theme => ({
 /**
  * RegistrationForm connected with reducers Registration
  * ErrorComponent will show if some component value is blank
+ * or receive the error when fetching with api AuthApi register
  * @param {Object} props 
  */
 function RegistrationForm(props) {
-    console.log('RegistrationForm props', props);
     //Props Object
     const { classes } = props
     const { 
@@ -74,12 +74,12 @@ function RegistrationForm(props) {
         mobileNumber, 
         firstName, 
         lastName, 
-        dob, 
+        isFetchingApi, 
         gender, 
         email,
         showLoginButton
     } = props
-    const { errorCode, errorMessage, showErrorComponent, setErrorMessage, hideErrorMessage } = props
+    const { errorCode, errorMessage, setErrorMessage, hideErrorMessage } = props
 
     //State Logic On Validate Form
     const handleCheckMobileNumber = () => {
@@ -191,7 +191,7 @@ function RegistrationForm(props) {
                             }
                             setStateRegistration('email', val)
                         }} />
-                    <Button color="secondary" label={'Register'} onClick={() => {
+                    <Button loading={isFetchingApi} color="secondary" label={'Register'} onClick={() => {
                         sagaRegistration()
                     }}/>
                 </Paper>
@@ -203,8 +203,7 @@ function RegistrationForm(props) {
 const mtp = ({ErrorHandling, Registration}) => {
     const {
         errorCode,
-        errorMessage,
-        showErrorComponent
+        errorMessage
     } = ErrorHandling
 
     const { mobileNumber,
@@ -213,7 +212,8 @@ const mtp = ({ErrorHandling, Registration}) => {
         dob,
         gender,
         email,
-        showLoginButton
+        showLoginButton,
+        isFetchingApi
     } = Registration
 
     return { 
@@ -225,7 +225,8 @@ const mtp = ({ErrorHandling, Registration}) => {
         dob,
         gender,
         email,
-        showLoginButton
+        showLoginButton,
+        isFetchingApi
     }
 }
 

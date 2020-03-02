@@ -34,6 +34,7 @@ export default function ErrorHandling(state = initState, action) {
                 ...state,
                 ...initState
             }
+        
         default:
             return state
     }

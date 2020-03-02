@@ -21,6 +21,11 @@ const styles = {
     }
 }
 
+/**
+ * This class component have a child component ItemSelectOptions
+ * You can extends this class and overwriding the function
+ * renderItemSelectOption to do render the child components
+ */
 class SelectOptions extends Component {
     constructor(props) {
         super(props)
