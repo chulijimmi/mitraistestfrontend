@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, Paper, Container, Typography } from '@material-ui/core'
@@ -18,9 +19,9 @@ import {
     hideErrorMessage
 } from '../actions/ErrorHandling'
 import { connect } from 'react-redux'
-import ErrorComponent from '../baseComponent/ErrorComponent'
 import { remapMobileNumber, validateEmail } from '../validation/RegisterValidation'
 import MessagingError from '../validation/MessagingError'
+import ErrorComponent from '../baseComponent/ErrorComponent'
 
 const styles = theme => ({
     root: {
@@ -127,29 +128,36 @@ function RegistrationForm(props) {
     }
 
     return(
+        
         <Container sm={12}>
             <BlockedScreen show={showLoginButton}/>
             <Grid item xs={12} sm={smSize(width)} className={classes.grid}>
                 <Paper elevation={0} className={classes.paper}>
                     <RenderTitle></RenderTitle>
-                    <ErrorComponent 
-                        message={errorMessage}
-                        code={errorCode}
-                        hide={() => hideErrorMessage()}
-                        show={showErrorComponent}
-                    />
+                    {
+                        errorCode==201 && errorMessage !== '' &&
+                        <ErrorComponent hide={hideErrorMessage} message={errorMessage}></ErrorComponent>
+                    }
                     <InputText
                         label='Mobile number' 
                         width={width}
                         onBlur={handleCheckMobileNumber}
                         value={mobileNumber}
-                        onChange={(val) => setStateRegistration('mobileNumber', remapMobileNumber(val))} />
+                        onChange={(val) => setStateRegistration('mobileNumber', remapMobileNumber(val))}/>
+                    {
+                        errorCode==202 && errorMessage !== '' &&
+                        <ErrorComponent hide={hideErrorMessage} message={errorMessage}></ErrorComponent>
+                    }
                     <InputText 
                         label='First name'
                         width={width}
                         onBlur={handleCheckFirstName}
                         value={firstName}
                         onChange={(val) => setStateRegistration('firstName', val)} />
+                    {
+                        errorCode==203 && errorMessage !== '' &&
+                        <ErrorComponent hide={hideErrorMessage} message={errorMessage}></ErrorComponent>
+                    }
                     <InputText
                         label='Last name'
                         width={width}
@@ -163,6 +171,10 @@ function RegistrationForm(props) {
                     <GenderOptions
                         checked={gender}
                         onChange={(value) => setStateRegistration('gender', value)} />
+                    {
+                        errorCode==204 && errorMessage !== '' &&
+                        <ErrorComponent hide={hideErrorMessage} message={errorMessage}></ErrorComponent>
+                    }
                     <InputText
                         label='Email'
                         width={width}
@@ -170,9 +182,20 @@ function RegistrationForm(props) {
                         value={email}
                         onChange={(val) => {
                             const email = validateEmail(val)
+                            const errMsg = MessagingError.email.isRequired
+                            if(!email) {
+                                setErrorMessage(errMsg.error, errMsg.message)
+                            } else {
+                                hideErrorMessage()
+                            }
                             setStateRegistration('email', val)
                         }} />
-                    <Button color="secondary" label={'Register'} onClick={() => sagaRegistration()}/>
+                    <Button color="secondary" label={'Register'} onClick={() => {
+                        console.log('prop', props)
+                        props.history.push({
+                            pathname: '/Home'
+                        })
+                    }}/>
                 </Paper>
             </Grid>
         </Container>

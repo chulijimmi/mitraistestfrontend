@@ -4,6 +4,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core'
 import PrimaryTheme from '../theme/PrimaryTheme'
 import Footer from '../component/Footer'
 
+
 function Registration() {
     let theme = createMuiTheme(PrimaryTheme)
     return(

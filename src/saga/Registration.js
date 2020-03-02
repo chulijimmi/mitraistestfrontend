@@ -1,6 +1,6 @@
 import { all, fork, takeEvery, select, put, delay, call } from 'redux-saga/effects'
 import { SAGA_REGISTRATION } from '../constant/Registration'
-import { showLoginButtonRegistration } from '../actions/Registration'
+import { showLoginButtonRegistration, setSuccessRegistration } from '../actions/Registration'
 import { setErrorMessage } from '../actions/ErrorHandling'
 import AuthApi from '../api/AuthApi'
 
@@ -13,10 +13,12 @@ function* __doRegister() {
     try {
         const payload = yield select( state => state.Registration )
         payload.dob = `${payload.dob.year}-${payload.dob.month}-${payload.dob.day}`
-        yield put(showLoginButtonRegistration())
         const response = yield call(apiRegister, payload);
         if(response.error !== 0) {
             yield put(setErrorMessage(response.error, response.message))
+        } else {
+            yield put(showLoginButtonRegistration())
+            yield put(setSuccessRegistration())
         }
     } catch (error) {
         throw error

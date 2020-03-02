@@ -24,20 +24,26 @@ function InputText(props) {
             outline: 'none',
             border: `1px solid black`,
             boxShadow: '0px 0px 0px 0.1'
+        },
+        error: {
+            position: 'relative',
+            width: '100%'
         }
     }
 
     return(
-        <div style={Style.container}>
-            <input 
-                type="text" 
-                style={Style.input} 
-                onChange={handleChange} 
-                value={props.value}
-                placeholder={props.label}
-                onFocus={props.onFocus}
-                onBlur={props.onBlur}
-                />
+        <div style={Style.error}>
+            <div style={Style.container}>
+                <input 
+                    type="text" 
+                    style={Style.input} 
+                    onChange={handleChange} 
+                    value={props.value}
+                    placeholder={props.label}
+                    onFocus={props.onFocus}
+                    onBlur={props.onBlur}
+                    />
+            </div>
         </div>
     )
 }

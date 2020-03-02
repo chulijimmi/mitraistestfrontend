@@ -1,9 +1,9 @@
 import {
     SET_STATE_REGISTRATION,
     SET_DOB_STATE_REGISTRATION,
-    SHOW_LOGIN_BUTTON_REGISTRATION
+    SHOW_LOGIN_BUTTON_REGISTRATION,
+    SUCCESS_REGISTRATION
 } from '../constant/Registration'
-import { remapMobileNumber } from '../validation/RegisterValidation'
 
 const initState = {
     mobileNumber : '',
@@ -16,7 +16,8 @@ const initState = {
     },
     gender: 2, //0: Female, 1: Male
     email: '',
-    showLoginButton: false
+    showLoginButton: false,
+    isRegistered: false
 }
 
 /**
@@ -49,6 +50,12 @@ export default function Registration(state = initState, action) {
             return {
                 ...state,
                 showLoginButton: true
+            }
+
+        case SUCCESS_REGISTRATION:
+            return {
+                ...state,
+                isRegistered: true
             }
         default:
             return state

@@ -2,7 +2,8 @@ import {
     SET_STATE_REGISTRATION,
     SET_DOB_STATE_REGISTRATION,
     SAGA_REGISTRATION,
-    SHOW_LOGIN_BUTTON_REGISTRATION
+    SHOW_LOGIN_BUTTON_REGISTRATION,
+    SUCCESS_REGISTRATION
 } from '../constant/Registration'
 
 /**
@@ -51,5 +52,14 @@ export const sagaRegistration = () => {
 export const showLoginButtonRegistration = () => {
     return {
         type: SHOW_LOGIN_BUTTON_REGISTRATION
+    }
+}
+
+/**
+ * This call in condition success Registration
+ */
+export const setSuccessRegistration = () => {
+    return {
+        type: SUCCESS_REGISTRATION
     }
 }
