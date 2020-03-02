@@ -7,16 +7,16 @@ import configureStore, { history } from './store'
 import Registration from '../src/template/Registration'
 import Login from '../src/template/Login'
 
-
 const store = configureStore()
 
 function App({ history, context }) {
+    const location = `${process.env.PUBLIC_URL}`;
     return(
         <ConnectedRouter history={history} context={context}>
             <Switch>
-                <Route exact path="/mitraistestfrontend" render={() => <Redirect to="/root" />} />
-                <Route path="/root" render={({ staticContext, ...props}) => <Registration {...props} />} />
-                <Route path="/login" render={({ staticContext, ...props}) => <Login {...props}/>} />
+                <Route exact path={`${location}/`} render={() => <Redirect to={`${location}/register`} />} />
+                <Route path={`${location}/register`} render={({ staticContext, ...props}) => <Registration {...props}/>} />
+                <Route path={`${location}/login`} render={({ staticContext, ...props}) => <Login {...props}/>} />
             </Switch>
         </ConnectedRouter>
     )
