@@ -6,6 +6,7 @@ import Footer from '../component/Footer'
 
 
 function Registration(props) {
+    console.log('Props Registration', props)
     let theme = createMuiTheme(PrimaryTheme)
     return(
         <MuiThemeProvider theme={theme}>

@@ -29,7 +29,7 @@ const Style = {
 }
 
 function Login(props) {
-
+    console.log('Props login', props)
     function linkHover(e) {
         e.target.style.background = Colors.secondary
     }

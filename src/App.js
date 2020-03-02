@@ -1,10 +1,11 @@
 import React from 'react'
 import { Provider, ReactReduxContext} from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import { ConnectedRouter } from 'connected-react-router'
 import './css/Main.css'
-import MainApp from './template/MainApp'
 import configureStore, { history } from './store'
+import Registration from '../src/template/Registration'
+import Login from '../src/template/Login'
 
 
 const store = configureStore()
@@ -12,7 +13,11 @@ const store = configureStore()
 function App({ history, context }) {
     return(
         <ConnectedRouter history={history} context={context}>
-            <Route path="/" render={({ staticContext, ...props}) => <MainApp {...props}/>} />
+            <Switch>
+                <Route exact path="/mitraistestfrontend" render={() => <Redirect to="/root" />} />
+                <Route path="/root" render={({ staticContext, ...props}) => <Registration {...props} />} />
+                <Route path="/login" render={({ staticContext, ...props}) => <Login {...props}/>} />
+            </Switch>
         </ConnectedRouter>
     )
 }
