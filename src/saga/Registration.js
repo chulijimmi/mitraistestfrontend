@@ -3,13 +3,14 @@ import { SAGA_REGISTRATION } from '../constant/Registration'
 import { showLoginButtonRegistration, setSuccessRegistration } from '../actions/Registration'
 import { setErrorMessage } from '../actions/ErrorHandling'
 import AuthApi from '../api/AuthApi'
+import { push } from 'connected-react-router'
 
 const apiRegister = payload => AuthApi.register({payload}).then(resp => resp).catch(err => err);
 
 /**
  * Register Button Task Runner
  */
-function* __doRegister() {
+export function* __doRegister() {
     try {
         const payload = yield select( state => state.Registration )
         payload.dob = `${payload.dob.year}-${payload.dob.month}-${payload.dob.day}`
@@ -20,6 +21,7 @@ function* __doRegister() {
             yield put(showLoginButtonRegistration())
             yield put(setSuccessRegistration())
         }
+        yield put(push('/login'))
     } catch (error) {
         throw error
     }

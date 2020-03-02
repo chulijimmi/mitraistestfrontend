@@ -5,12 +5,12 @@ import PrimaryTheme from '../theme/PrimaryTheme'
 import Footer from '../component/Footer'
 
 
-function Registration() {
+function Registration(props) {
     let theme = createMuiTheme(PrimaryTheme)
     return(
         <MuiThemeProvider theme={theme}>
-            <RegistrationForm />
-            <Footer/>
+            <RegistrationForm {...props} />
+            <Footer {...props} />
         </MuiThemeProvider>
     )
 }

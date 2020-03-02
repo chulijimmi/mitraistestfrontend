@@ -62,6 +62,7 @@ const styles = theme => ({
  * @param {Object} props 
  */
 function RegistrationForm(props) {
+    console.log('RegistrationForm props', props);
     //Props Object
     const { classes } = props
     const { 
@@ -191,10 +192,7 @@ function RegistrationForm(props) {
                             setStateRegistration('email', val)
                         }} />
                     <Button color="secondary" label={'Register'} onClick={() => {
-                        console.log('prop', props)
-                        props.history.push({
-                            pathname: '/Home'
-                        })
+                        sagaRegistration()
                     }}/>
                 </Paper>
             </Grid>
