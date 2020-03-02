@@ -12,7 +12,7 @@ const store = configureStore()
 function App({ history, context }) {
     return(
         <ConnectedRouter history={history} context={context}>
-            <Route path="/" render={() => <MainApp/>} />
+            <Route path="/" render={({ staticContext, ...props}) => <MainApp {...props}/>} />
         </ConnectedRouter>
     )
 }

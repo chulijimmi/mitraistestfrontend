@@ -16,7 +16,7 @@ const routeMiddleware = routerMiddleware(history)
 const middlewares = [sagaMiddleware,logger]
 
 export default function configureStore (initState){
-    const store = createStore(persistedReducer, initState, composeEnhancers(applyMiddleware(...middlewares)))
+    const store = createStore(persistedReducer, initState, composeEnhancers(applyMiddleware(...middlewares), applyMiddleware(routeMiddleware)))
     sagaMiddleware.run(rootSaga);
     if(module.hot){
         module.hot.accept('../reducers/index',()=>{

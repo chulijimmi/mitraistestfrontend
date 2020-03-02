@@ -54,7 +54,7 @@ export default function Registration(state = initState, action) {
 
         case SUCCESS_REGISTRATION:
             return {
-                ...state,
+                ...initState,
                 isRegistered: true
             }
         default:

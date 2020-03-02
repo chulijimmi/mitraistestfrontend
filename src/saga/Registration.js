@@ -21,7 +21,6 @@ export function* __doRegister() {
             yield put(showLoginButtonRegistration())
             yield put(setSuccessRegistration())
         }
-        yield put(push('/login'))
     } catch (error) {
         throw error
     }
