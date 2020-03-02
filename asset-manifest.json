@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/mitraistestfrontend/static/css/main.f8cfdff1.chunk.css",
-    "main.js": "/mitraistestfrontend/static/js/main.51472a87.chunk.js",
-    "main.js.map": "/mitraistestfrontend/static/js/main.51472a87.chunk.js.map",
+    "main.js": "/mitraistestfrontend/static/js/main.10386f46.chunk.js",
+    "main.js.map": "/mitraistestfrontend/static/js/main.10386f46.chunk.js.map",
     "runtime-main.js": "/mitraistestfrontend/static/js/runtime-main.c8bd259c.js",
     "runtime-main.js.map": "/mitraistestfrontend/static/js/runtime-main.c8bd259c.js.map",
-    "static/js/2.f2cf9ed1.chunk.js": "/mitraistestfrontend/static/js/2.f2cf9ed1.chunk.js",
-    "static/js/2.f2cf9ed1.chunk.js.map": "/mitraistestfrontend/static/js/2.f2cf9ed1.chunk.js.map",
+    "static/js/2.214afcde.chunk.js": "/mitraistestfrontend/static/js/2.214afcde.chunk.js",
+    "static/js/2.214afcde.chunk.js.map": "/mitraistestfrontend/static/js/2.214afcde.chunk.js.map",
     "index.html": "/mitraistestfrontend/index.html",
-    "precache-manifest.3624a9283157c6aaa9f33f6310247a58.js": "/mitraistestfrontend/precache-manifest.3624a9283157c6aaa9f33f6310247a58.js",
+    "precache-manifest.31b3c1ef5a2a1ebbc5b02389f3c34ca9.js": "/mitraistestfrontend/precache-manifest.31b3c1ef5a2a1ebbc5b02389f3c34ca9.js",
     "service-worker.js": "/mitraistestfrontend/service-worker.js",
     "static/css/main.f8cfdff1.chunk.css.map": "/mitraistestfrontend/static/css/main.f8cfdff1.chunk.css.map",
-    "static/js/2.f2cf9ed1.chunk.js.LICENSE.txt": "/mitraistestfrontend/static/js/2.f2cf9ed1.chunk.js.LICENSE.txt"
+    "static/js/2.214afcde.chunk.js.LICENSE.txt": "/mitraistestfrontend/static/js/2.214afcde.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c8bd259c.js",
-    "static/js/2.f2cf9ed1.chunk.js",
+    "static/js/2.214afcde.chunk.js",
     "static/css/main.f8cfdff1.chunk.css",
-    "static/js/main.51472a87.chunk.js"
+    "static/js/main.10386f46.chunk.js"
   ]
 }
