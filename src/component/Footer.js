@@ -25,13 +25,14 @@ const Style = {
  * @param {Function} props 
  */
 function ButtonLogin(props) {
+    const location = `${process.env.PUBLIC_URL}`;
     const { action } = props
     return(
         <Button 
             label={'Login'} 
             onClick={() => {
                 action()
-                props.history.push('/login')
+                props.history.push(`${location}/login`, {})
             }} />
     )
 }
