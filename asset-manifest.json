@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mitraistestfrontend/static/css/main.f8cfdff1.chunk.css",
-    "main.js": "/mitraistestfrontend/static/js/main.76564387.chunk.js",
-    "main.js.map": "/mitraistestfrontend/static/js/main.76564387.chunk.js.map",
+    "main.js": "/mitraistestfrontend/static/js/main.9634a287.chunk.js",
+    "main.js.map": "/mitraistestfrontend/static/js/main.9634a287.chunk.js.map",
     "runtime-main.js": "/mitraistestfrontend/static/js/runtime-main.c8bd259c.js",
     "runtime-main.js.map": "/mitraistestfrontend/static/js/runtime-main.c8bd259c.js.map",
     "static/js/2.122d7e41.chunk.js": "/mitraistestfrontend/static/js/2.122d7e41.chunk.js",
     "static/js/2.122d7e41.chunk.js.map": "/mitraistestfrontend/static/js/2.122d7e41.chunk.js.map",
     "index.html": "/mitraistestfrontend/index.html",
-    "precache-manifest.b23dc2f268270ef9779869c0d6c505b8.js": "/mitraistestfrontend/precache-manifest.b23dc2f268270ef9779869c0d6c505b8.js",
+    "precache-manifest.213e713cfb7d7f3f65779b26037a724a.js": "/mitraistestfrontend/precache-manifest.213e713cfb7d7f3f65779b26037a724a.js",
     "service-worker.js": "/mitraistestfrontend/service-worker.js",
     "static/css/main.f8cfdff1.chunk.css.map": "/mitraistestfrontend/static/css/main.f8cfdff1.chunk.css.map",
     "static/js/2.122d7e41.chunk.js.LICENSE.txt": "/mitraistestfrontend/static/js/2.122d7e41.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c8bd259c.js",
     "static/js/2.122d7e41.chunk.js",
     "static/css/main.f8cfdff1.chunk.css",
-    "static/js/main.76564387.chunk.js"
+    "static/js/main.9634a287.chunk.js"
   ]
 }

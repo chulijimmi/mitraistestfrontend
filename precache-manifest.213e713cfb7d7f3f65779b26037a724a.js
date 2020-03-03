@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "36405f083665a5375b066985e5cad29d",
+    "revision": "29cbe2d98fa0014d5a3d39cd2d161f3d",
     "url": "/mitraistestfrontend/index.html"
   },
   {
-    "revision": "9a5360996888f2ba265d",
+    "revision": "497d79d15b105f1c6305",
     "url": "/mitraistestfrontend/static/css/main.f8cfdff1.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mitraistestfrontend/static/js/2.122d7e41.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9a5360996888f2ba265d",
-    "url": "/mitraistestfrontend/static/js/main.76564387.chunk.js"
+    "revision": "497d79d15b105f1c6305",
+    "url": "/mitraistestfrontend/static/js/main.9634a287.chunk.js"
   },
   {
     "revision": "0eeb7bed84e5937c77a6",
