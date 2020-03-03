@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import {withRouter} from 'react-router-dom'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import { Grid, Paper, Container, Typography } from '@material-ui/core'
@@ -65,11 +64,13 @@ const styles = theme => ({
 function RegistrationForm(props) {
     //Props Object
     const { classes } = props
+
     const { 
         sagaRegistration, 
         setStateRegistration, 
         setDobStateRegistration
     } = props
+
     const { 
         mobileNumber, 
         firstName, 
@@ -79,31 +80,50 @@ function RegistrationForm(props) {
         email,
         showLoginButton
     } = props
-    const { errorCode, errorMessage, setErrorMessage, hideErrorMessage } = props
+
+    const {
+        errorCode,
+        errorMessage,
+        setErrorMessage,
+        hideErrorMessage
+    } = props
 
     //State Logic On Validate Form
     const handleCheckMobileNumber = () => {
         if (mobileNumber == '')
-        setErrorMessage(201, 'Mobile number is required')
+        setErrorMessage(
+            MessagingError.mobileNumber.isRequired.error,
+            MessagingError.mobileNumber.isRequired.message
+        )
     }
     
     const handleCheckFirstName = () => {
         if (firstName == '')
-        setErrorMessage(202, 'First name is required')
+        setErrorMessage(
+            MessagingError.firstName.isRequired.error,
+            MessagingError.firstName.isRequired.message
+        )
     }
 
     const handleCheckLastName = () => {
         if (lastName == '')
-        setErrorMessage(203, 'Last name is required')
+        setErrorMessage(
+            MessagingError.lastName.isRequired.error,
+            MessagingError.lastName.isRequired.message
+        )
     }
 
     const handleCheckEmail = () => {
         if(email == '')
-        setErrorMessage(304, 'Email is required and should valid email address')
+        setErrorMessage(
+            MessagingError.email.isRequired.error,
+            MessagingError.email.isRequired.message
+        )
     }
     
     //Style logic reducing the size screen
     const { width } = WindowDimmension()
+    
     const smSize = (width) => {
         if (width < 1208 && width > 786) return 6
         if (width < 786) return 12
@@ -129,7 +149,7 @@ function RegistrationForm(props) {
     }
 
     return(
-        
+        <React.Fragment>
         <Container sm={12}>
             <BlockedScreen show={showLoginButton}/>
             <Grid item xs={12} sm={smSize(width)} className={classes.grid}>
@@ -197,6 +217,7 @@ function RegistrationForm(props) {
                 </Paper>
             </Grid>
         </Container>
+        </React.Fragment>
     )
 }
 
@@ -209,7 +230,6 @@ const mtp = ({ErrorHandling, Registration}) => {
     const { mobileNumber,
         firstName,
         lastName,
-        dob,
         gender,
         email,
         showLoginButton,
@@ -222,12 +242,37 @@ const mtp = ({ErrorHandling, Registration}) => {
         mobileNumber, 
         firstName, 
         lastName,
-        dob,
         gender,
         email,
         showLoginButton,
         isFetchingApi
     }
+}
+
+RegistrationForm.propTypes = {
+    //Standart error to display the error component
+    errorCode: function(props, propName, componentName) {
+        const propValue = props[propName]
+        if (typeof propValue === 'string') return
+        if (typeof propValue === 'number') return
+        return new Error(`${componentName} only accept string, or number`)
+    },
+    errorMessage: PropTypes.string,
+    //State of payload to fetching api
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    gender: PropTypes.number,
+    email: PropTypes.string,
+    //To display login button
+    showLoginButton: PropTypes.bool,
+    //To display loading text
+    isFetchingApi: PropTypes.bool,
+    //Action creator to handle process
+    sagaRegistration: PropTypes.func,
+    setStateRegistration: PropTypes.func,
+    setDobStateRegistration: PropTypes.func,
+    setErrorMessage: PropTypes.func,
+    hideErrorMessage: PropTypes.func
 }
 
 export default connect(mtp, {

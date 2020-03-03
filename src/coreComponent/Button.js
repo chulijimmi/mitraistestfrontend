@@ -15,7 +15,7 @@ function MyButton(props) {
             fullWidth={true}
             onClick={() => props.onClick()}>
         {
-            props.loading ? 'Loading' : props.label
+            props.loading ? 'LOADING' : props.label
         }
         </Button>
     )

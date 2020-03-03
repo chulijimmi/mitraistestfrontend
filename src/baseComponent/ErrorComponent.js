@@ -41,7 +41,7 @@ function ErrorComponent(props) {
     return(
         <TransitionGroup>
             <CSSTransition timeout={500} classNames="error">
-                <div style={Style.box} onClick={() => props.hide()}>
+                <div className={'errorBox'} style={Style.box} onClick={() => props.hide()}>
                     <div style={Style.arrow}></div>
                     <span style={Style.text}>{props.message}</span>
                 </div>

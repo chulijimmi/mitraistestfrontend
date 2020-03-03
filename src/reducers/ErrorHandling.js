@@ -10,6 +10,13 @@ const initState = {
     showErrorComponent: false
 }
 
+/**
+ * State reducer to manage the error
+ * from response api. This one is used by component also
+ * such as ErrorComponent, etc.
+ * @param {Object} state 
+ * @param {Function} action 
+ */
 export default function ErrorHandling(state = initState, action) {
     switch (action.type) {
         case SET_ERROR_MESSAGE:

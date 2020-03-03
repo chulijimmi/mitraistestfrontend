@@ -1,7 +1,7 @@
-import { all, fork, takeEvery, select, put, delay, call } from 'redux-saga/effects'
+import { all, fork, takeEvery, select, put, call } from 'redux-saga/effects'
 import { SAGA_REGISTRATION } from '../constant/Registration'
 import { showLoginButtonRegistration, setSuccessRegistration, setIsFetchingApi } from '../actions/Registration'
-import { setErrorMessage } from '../actions/ErrorHandling'
+import { setErrorMessage, hideErrorMessage } from '../actions/ErrorHandling'
 import AuthApi from '../api/AuthApi'
 
 const apiRegister = payload => AuthApi.register({payload}).then(resp => resp).catch(err => err);
@@ -19,6 +19,7 @@ export function* __doRegister() {
             yield put(setErrorMessage(response.error, response.message))
         } else {
             yield put(setSuccessRegistration())
+            yield put(hideErrorMessage())
             yield put(showLoginButtonRegistration())
         }
     } catch (error) {

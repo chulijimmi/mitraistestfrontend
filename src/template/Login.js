@@ -42,7 +42,13 @@ function Login(props) {
         <div style={Style.container}>
             <div style={Style.login}>
                 <h4 style={Style.titleLogin}>This is login page</h4>
-                <a onMouseOver={linkHover} onMouseOut={linkDefault} style={Style.link} href="#" onClick={() => props.history.goBack()}>Back to register</a>
+                <button 
+                    onMouseOver={linkHover}
+                    onMouseOut={linkDefault}
+                    style={Style.link}
+                    onClick={() => props.history.goBack()}>
+                        Back to register
+                </button>
             </div>
             <Footer />
         </div>
